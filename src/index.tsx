@@ -28,7 +28,7 @@ const App = () => {
       entryPoints: ['index.js'],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin()]
+      plugins: [unpkgPathPlugin(input)]
     })
 
     console.log(result)
