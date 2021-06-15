@@ -35,7 +35,9 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
     iframe.current.srcdoc = html
     // Retrive code (transpiled and builded) and emit that code to iframe
     // that eval the code
-    iframe.current.contentWindow.postMessage(code, '*')
+    setTimeout(() => {
+      iframe.current.contentWindow.postMessage(code, '*')
+    }, 50)
   }, [code])
 
   return (
