@@ -29,9 +29,10 @@ const reducer = (state: CellsState = initialState, action: Action) => {
         break
       case ActionType.DELETE_CELL:
         delete draft.data[action.payload]
-        draft.order.filter((id) => id !== action.payload)
-
+        const idx = draft.order.findIndex((id) => id === action.payload)
+        if (idx !== -1) draft.order.splice(idx, 1)
         break
+
       case ActionType.MOVE_CELL:
         const { direction } = action.payload
         const index = draft.order.findIndex((id) => id === action.payload.id)
