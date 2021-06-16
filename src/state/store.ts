@@ -5,6 +5,9 @@ import reducers from './reducers'
 
 export const store = createStore(reducers, {}, applyMiddleware(thunk))
 
+// const state = store.getState()
+// state.cells.data
+
 store.dispatch({
   type: ActionType.INSERT_CELL_BEFORE,
   payload: {
