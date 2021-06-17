@@ -46,7 +46,7 @@ const reducer = (state: CellsState = initialState, action: Action) => {
         draft.order[targetIndex] = action.payload.id
 
         break
-      case ActionType.INSERT_CELL_BEFORE:
+      case ActionType.INSERT_CELL_AFTER:
         const cell: Cell = {
           content: '',
           type: action.payload.type,
@@ -58,9 +58,9 @@ const reducer = (state: CellsState = initialState, action: Action) => {
           (id) => id === action.payload.id
         )
         if (foundIndex < 0) {
-          draft.order.push(cell.id)
+          draft.order.unshift(cell.id)
         } else {
-          draft.order.splice(foundIndex, 0, cell.id)
+          draft.order.splice(foundIndex + 1, 0, cell.id)
         }
         break
     }
